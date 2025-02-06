@@ -42,12 +42,60 @@ const gets = async(req,res)=>{
      }
 }
 
+const dels = async (req, res) => {
+    try {
+        const { id } = req.params; // Use params instead of body
+
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({ success: false, message: "Invalid ID format" });
+        }
+
+        const deletedData = await dataModel.findByIdAndDelete(id);
+
+        if (!deletedData) {
+            return res.status(404).json({ success: false, message: "Data not found" });
+        }
+
+        return res.json({ success: true, message: "Data deleted successfully" });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ success: false, message: "Error deleting data", error });
+    }
+};
+
+const change = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { newData } = req.body;  // Get new data from request body
+
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({ success: false, message: "Invalid ID format" });
+        }
+
+        const updatedData = await dataModel.findByIdAndUpdate(
+            id,
+            { data: newData },  // Update the data field
+            { new: true }  // Return the updated document
+        );
+
+        if (!updatedData) {
+            return res.status(404).json({ success: false, message: "Data not found" });
+        }
+
+        return res.json({ success: true, message: "Data updated successfully", updatedData });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ success: false, message: "Error updating data", error });
+    }
+};
 
 
 
 
 dataRoute.post('/add',add);
 dataRoute.get('/get',gets)
+dataRoute.delete('/del/:id',dels)
+dataRoute.put('/chan/:id',change)
 
 
 
