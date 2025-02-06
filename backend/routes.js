@@ -3,17 +3,6 @@ import dataModel from './models/dataModel.js';
 import mongoose from 'mongoose';
 const dataRoute = express.Router();
 
-
-// const add = async(req,res)=>{
-//     try {
-//         const {data} = req.body;
-//      const newdata = new dataModel(data)
-//      newdata.save();
-//     } catch (error) {
-//          console.log(error);
-//     }
-// }
-
 const add = async (req, res) => {
     try {
         const { data } = req.body; // Destructure data from the request body
