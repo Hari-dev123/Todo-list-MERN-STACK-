@@ -7,6 +7,20 @@ const Inputc = () => {
   const [editId, setEditId] = useState(null);
   const [editText, setEditText] = useState("");
 
+  const handleButton = async(event)=>{
+       if(event.key === "Enter"){
+        try {
+          const res = await axios.post(`${import.meta.env.VITE_URI}/add`, { data });
+          if (res.data.success) {
+            setData("");
+            retrive();
+          }
+        } catch (error) {
+          console.error("Error adding data:", error);
+        }
+       }
+  }
+
   const add = async () => {
     try {
       const res = await axios.post(`${import.meta.env.VITE_URI}/add`, { data });
@@ -73,6 +87,7 @@ const Inputc = () => {
           onChange={(e) => setData(e.target.value)}
           className="border border-gray-400 rounded-md p-3 w-full sm:w-auto flex-grow bg-gray-100 focus:outline-none text-lg"
           placeholder="Enter task..."
+          onKeyDown={(event)=>handleButton(event)}
         />
         <button
           onClick={add}
