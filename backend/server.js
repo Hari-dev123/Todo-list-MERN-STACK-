@@ -6,7 +6,8 @@ import dataRoute from './routes.js';
 dotenv.config();
 const corsOptions = {
     origin : process.env.APPLICATION_URI,
-    methods : 'GET,HEAD,PUT,PATCH,POST,DELETE'
+    methods : 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true
 }
 
 const app = express();
