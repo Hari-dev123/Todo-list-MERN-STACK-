@@ -4,9 +4,13 @@ import connectDB from './config/connectDB.js';
 import cors from 'cors';
 import dataRoute from './routes.js';
 dotenv.config();
+const corsOptions = {
+    origin : process.env.APPLICATION_URI,
+    methods : 'GET,HEAD,PUT,PATCH,POST,DELETE'
+}
 
 const app = express();
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 connectDB();
 app.use('/api/data',dataRoute);
