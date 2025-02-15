@@ -62,7 +62,7 @@ const Inputc = () => {
   }, []);
 
   return (
-    <div className="w-full shadow-2xl h-fit max-w-xl md:max-w-2xl mx-auto py-16 px-6 sm:px-7 md:px-10 bg-white  rounded-lg">
+    <div className="w-full shadow-2xl h-fit max-w-xl md:max-w-2xl mx-auto pt-14 pb-5 px-6 sm:px-7 md:px-10 bg-white  rounded-lg">
       <h1 className="text-center text-3xl sm:text-4xl font-bold mb-6">
         To-Do List
       </h1>
@@ -82,7 +82,7 @@ const Inputc = () => {
         </button>
       </div>
 
-      <div className="mt-6 max-h-[400px] overflow-y-scroll">
+      <div id="content" className="mt-6 max-h-[400px] overflow-y-scroll scrollbar-hide">
         {retriveData.length > 0 ? (
           retriveData.map((el) => (
             <div

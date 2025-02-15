@@ -2,6 +2,29 @@
 
 
 /* Scrollbar Thumb */
+/* Hide scrollbar for WebKit browsers (Chrome, Edge, Safari) */
+body::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+/* Hide scrollbar for Firefox */
+body {
+    scrollbar-width: none;
+    -ms-overflow-style: none; /* Hide scrollbar in IE & Edge */
+}
+
+
+#content {
+    overflow-y: scroll; /* Allow scrolling */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE & Edge */
+}
+
+#content::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+
 
 @media screen and (max-width: 350px) { /* Adjusted to 320px */
     #main {
