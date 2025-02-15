@@ -1,2 +1,14 @@
 @import "tailwindcss";
 
+
+/* Scrollbar Thumb */
+
+@media screen and (max-width: 350px) { /* Adjusted to 320px */
+    #main {
+        padding: 50px 10px !important;
+    }
+}
+
+
+
+
