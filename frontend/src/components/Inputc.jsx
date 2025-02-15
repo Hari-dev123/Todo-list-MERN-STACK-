@@ -10,7 +10,7 @@ const Inputc = () => {
   const handleButton = async(event)=>{
        if(event.key === "Enter"){
         try {
-          const res = await axios.post(`${import.meta.env.VITE_URI}/add`, { data });
+          const res = await axios.post(`${import.meta.env.VITE_URI}/api/data/add`, { data });
           if (res.data.success) {
             setData("");
             retrive();
@@ -23,7 +23,7 @@ const Inputc = () => {
 
   const add = async () => {
     try {
-      const res = await axios.post(`${import.meta.env.VITE_URI}/add`, { data });
+      const res = await axios.post(`${import.meta.env.VITE_URI}/api/data/add`, { data });
       if (res.data.success) {
         setData("");
         retrive();
@@ -35,7 +35,7 @@ const Inputc = () => {
 
   const retrive = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_URI}/get`);
+      const res = await axios.get(`${import.meta.env.VITE_URI}/api/data/get`);
       if (res.data.success) {
         const allData = res.data.datas.flatMap((item) => item);
         setRetrive(allData);
@@ -47,7 +47,7 @@ const Inputc = () => {
 
   const del = async (id) => {
     try {
-      const res = await axios.delete(`${import.meta.env.VITE_URI}/del/${id}`);
+      const res = await axios.delete(`${import.meta.env.VITE_URI}/api/data/del/${id}`);
       if (res.data.success) {
         retrive();
       }
@@ -58,7 +58,7 @@ const Inputc = () => {
 
   const edit = async (id) => {
     try {
-      const res = await axios.put(`${import.meta.env.VITE_URI}/chan/${id}`, {
+      const res = await axios.put(`${import.meta.env.VITE_URI}/api/data/chan/${id}`, {
         newData: editText,
       });
       if (res.data.success) {
